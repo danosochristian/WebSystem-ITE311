@@ -8,12 +8,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Google Fonts (Optional for Professional Look) -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         body {
-            background-color: #f8f9fa; /* Light professional background */
+            background-color: #f8f9fa;
             font-family: "Poppins", sans-serif;
             color: #212529;
         }
@@ -26,7 +26,7 @@
         .navbar-brand {
             font-weight: 600;
             font-size: 1.4rem;
-            color: #0d6efd !important; /* Bootstrap primary */
+            color: #0d6efd !important;
         }
         .nav-link {
             color: #495057 !important;
@@ -34,7 +34,7 @@
             transition: color 0.2s ease;
         }
         .nav-link:hover {
-            color: #0d6efd !important; /* Hover to primary color */
+            color: #0d6efd !important;
         }
         .nav-link.active {
             color: #0d6efd !important;
@@ -52,10 +52,12 @@
 </head>
 <body>
 
+<?php $session = session(); ?>
+
 <!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg">
   <div class="container">
-    <a class="navbar-brand" href="<?= site_url('/') ?>">LMS</a>
+    <a class="navbar-brand" href="<?= site_url('/') ?>">DANOSO</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -71,6 +73,21 @@
         <li class="nav-item">
           <a class="nav-link <?= uri_string() == 'contact' ? 'active' : '' ?>" href="<?= site_url('contact') ?>">Contact</a>
         </li>
+
+        <?php if (!$session->get('isLoggedIn')): ?>
+            <!-- Guest links -->
+            <li class="nav-item">
+              <a class="nav-link <?= uri_string() == 'login' ? 'active' : '' ?>" href="<?= site_url('login') ?>">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link <?= uri_string() == 'register' ? 'active' : '' ?>" href="<?= site_url('register') ?>">Register</a>
+            </li>
+        <?php else: ?>
+            <!-- Logged-in user: only Dashboard -->
+            <li class="nav-item">
+              <a class="nav-link <?= uri_string() == 'dashboard' ? 'active' : '' ?>" href="<?= site_url('dashboard') ?>">Dashboard</a>
+            </li>
+        <?php endif; ?>
       </ul>
     </div>
   </div>

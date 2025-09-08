@@ -12,6 +12,7 @@ class CreateUsersTable extends Migration
         $this->forge->addField([
             'id' => [
                 'type'           => 'INT',
+                'constraint'     => 5,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
@@ -21,7 +22,7 @@ class CreateUsersTable extends Migration
             ],
             'email' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '150',
+                'constraint' => '100',
                 'unique'     => true,
             ],
             'password' => [
@@ -29,20 +30,20 @@ class CreateUsersTable extends Migration
                 'constraint' => '255',
             ],
             'role' => [
-                'type'       => 'ENUM("student","admin")',
-                'default'    => 'student',
+                'type'       => 'ENUM',
+                'constraint' => ['admin', 'user'],
+                'default'    => 'user',
             ],
             'created_at' => [
-                'type'    => 'DATETIME',
-                'default' => new RawSql('CURRENT_TIMESTAMP'),
+                'type' => 'DATETIME',
+                'null' => true,
             ],
             'updated_at' => [
-                'type'    => 'DATETIME',
-                'null'    => true,
-                'default' => null,
-                'on_update' => new RawSql('CURRENT_TIMESTAMP'),
+                'type' => 'DATETIME',
+                'null' => true,
             ],
         ]);
+
         $this->forge->addKey('id', true);
         $this->forge->createTable('users');
     }

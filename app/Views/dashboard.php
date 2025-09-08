@@ -10,9 +10,5 @@
         Welcome, <?= esc(session('userEmail')) ?>!
     </div>
 
-    <div class="card shadow-sm border-0">
-        <div class="card-body">
-            <p class="mb-0">ITE311-DANOSO.</p>
-        </div>
-    </div>
+
 <?= $this->endSection() ?>
