@@ -11,10 +11,7 @@ class Migrations extends BaseConfig
      * Enable/Disable Migrations
      * --------------------------------------------------------------------------
      *
-     * Migrations are enabled by default.
-     *
-     * You should enable migrations whenever you intend to do a schema migration
-     * and disable it back when you're done.
+     * Enable migrations whenever you intend to do a schema migration.
      */
     public bool $enabled = true;
 
@@ -23,28 +20,26 @@ class Migrations extends BaseConfig
      * Migrations Table
      * --------------------------------------------------------------------------
      *
-     * This is the name of the table that will store the current migrations state.
-     * When migrations runs it will store in a database table which migration
-     * files have already been run.
+     * This table stores the current migration state.
      */
     public string $table = 'migrations';
 
     /**
      * --------------------------------------------------------------------------
-     * Timestamp Format
+     * Migration Type
      * --------------------------------------------------------------------------
      *
-     * This is the format that will be used when creating new migrations
-     * using the CLI command:
-     *   > php spark make:migration
+     * 'sequential' -> 001_create_table.php, 002_add_column.php, etc.
+     * 'timestamp'  -> 20250909120000_create_table.php, etc.
+     */
+    public string $type = 'sequential';  // change to 'timestamp' if you prefer timestamped migrations
+
+    /**
+     * --------------------------------------------------------------------------
+     * Timestamp Format (for timestamped migrations only)
+     * --------------------------------------------------------------------------
      *
-     * NOTE: if you set an unsupported format, migration runner will not find
-     *       your migration files.
-     *
-     * Supported formats:
-     * - YmdHis_
-     * - Y-m-d-His_
-     * - Y_m_d_His_
+     * Ignored if using sequential migrations.
      */
     public string $timestampFormat = 'Y-m-d-His_';
 }
