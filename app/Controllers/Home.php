@@ -6,6 +6,11 @@ class Home extends BaseController
 {
     public function index(): string
     {
-        return view('welcome_message');
+        $data = [
+            'title' => 'Home Page'
+        ];
+
+        // Load the custom Bootstrap homepage
+        return view('home', $data);
     }
 }
