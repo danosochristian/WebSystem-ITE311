@@ -18,7 +18,7 @@
             color: #212529;
         }
 
-        /* Navbar */
+        
         .navbar {
             background-color: #ffffff;
             border-bottom: 1px solid #eaeaea;
@@ -41,7 +41,7 @@
             font-weight: 600;
         }
 
-        /* Content container */
+        
         .main-container {
             background: #ffffff;
             border-radius: 12px;
