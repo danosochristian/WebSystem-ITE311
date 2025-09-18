@@ -1,3 +1,4 @@
+/* danoso */
 <?= $this->extend('template') ?>
 
 <?= $this->section('title') ?>Home<?= $this->endSection() ?>
